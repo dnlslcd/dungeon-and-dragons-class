@@ -23,8 +23,17 @@ class Character {
     }
 
     // Método estático para comparar niveles de dos personajes
+    // Si Character1 tiene más nivel que Character2: devolver un 1
+    // Si sucede al revés: devolver un -1
+    // Si ambos tienen el mismo nivel: dovolver un 0
     static compareLevels(character1, character2) {
-        // COMPLETAR
+        if (character1.level > character2.level) {
+            return 1;
+        } 
+        if (character2.level > character1.level){
+            return -1;
+        }
+        return 0;
     }
 }
 
@@ -86,5 +95,5 @@ console.log(`Comparación de niveles: ${comparisonResult_3}`); // Debería devol
 // BONUS: Usa el método sort y el método estático compareLevels para ordenar adecuadamente el array de personajes de menor a mayor level
 let characters = [healer, cleverWarrior, warrior,];
 console.log('Antes de aplicar el sort: ', characters.map(c => `${c.name} - level ${c.level}`)); // Los perosnajes estan desordenador por nivel
-characters.sort(); // <--- COMPLETAR
+characters.sort((a, b) => Character.compareLevels(a, b));
 console.log('Después de aplicar el sort: ', characters.map(c => `${c.name} - level ${c.level}`)); // Los perosnajes deberían estar oredenador de menor a mayor nivel
